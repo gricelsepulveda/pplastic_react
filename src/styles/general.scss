@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
+
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+//HEADERS
+h1 {
+  font-size: 2.26rem;
+  font-weight: 900;
+}
+
+//FLEX
+.flex {
+  display: flex;
+  &.row {
+    flex-direction: row;
+    &.center {
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+    }
+    &.start {
+      justify-content: flex-start;
+      align-content: center;
+      align-items: center;
+    }
+    &.end {
+      justify-content: flex-end;
+      align-content: center;
+      align-items: center;
+    }
+    &.between {
+      justify-content: space-between;
+      align-content: center;
+      align-items: center;
+    }
+    &.around {
+      justify-content: space-around;
+      align-content: center;
+      align-items: center;
+    }
+  }
+  &.col {
+    flex-direction: column;
+    &.center {
+      align-items: center;
+      justify-content: center;
+    }
+    &.start {
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+    &.end {
+      align-items: flex-end;
+      justify-content: flex-start;
+    }
+  }
+}

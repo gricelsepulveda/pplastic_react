@@ -1,0 +1,225 @@
+@import "./common/vars.scss";
+@import "./common/mixins.scss";
+
+body{
+  width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+  background-color: $white;
+  font-family: "Open Sans", "Arial", sans-serif;
+  @include flex-col-center;
+}
+
+#root{
+  @include flex-col-center;
+  width: 100%;
+  position: relative;
+}
+
+.pp-nav{
+  width: 100vw;
+  height: 92px;
+  background-color: $color-3;
+  box-sizing: border-box;
+  padding-left: 40px;
+  padding-right: 40px;
+  @include shadow;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  .pp-description{
+    width: 50%;
+    font: {
+      size: 16px;
+      weight: 400;
+    }
+    color: $white;
+    @media #{$sm}{
+      width: 100vw;
+      position: fixed;
+      left: 0px;
+      top: 80px;
+      background-color: $color-1;
+      color: $black;
+      font-size: 10px;
+      text-align: center;
+      box-sizing: border-box;
+      padding: 10px 20px 10px 20px;
+    }
+  }
+  .pp-title-nav{
+    .pp-logo{
+      width: 72px;
+      height: auto;
+    }
+    .pp-title{
+      font-family: 'Gloria Hallelujah', cursive;
+      @include clean-webkit;
+      @include zero-hard;
+      font: {
+        size: 32px;
+        weight: 300;
+      }
+      color: $white;
+      margin-left: 10px!important;
+      @media #{$sm}{
+        font-size: 21px;
+      }
+    }
+  }
+  .pp-contact{
+    @include flex-row-center;
+    background-color: $color-5;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 100%;
+    font: {
+      size: 14px;
+      weight: 400;
+    }
+    color: $white;
+    @media #{$sm}{
+      display: none;
+    }
+    > a{
+      font: {
+        size: 14px;
+        weight: 700;
+      }
+      color: $white;
+      cursor: pointer;
+      text-decoration: none;
+    }
+  }
+}
+
+.pp-body-landing{
+  width: 100%;
+  max-width: 1200px;
+  background-color: white;
+  position: relative;
+  padding-top: 92px;
+  .pp-que-hacemos{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 80px 80px 140px 80px;
+    @media #{$sm}{
+      padding: 40px 20px 80px 20px;
+    }
+    .pp-que-hacemos-title{
+      @include clean-webkit;
+      @include zero-hard;
+      width: 100%;
+      font: {
+        size: 36px;
+        weight: 800;
+      }
+      color: $black;
+      text-align: center;
+      text-transform: uppercase;
+      margin-bottom: 40px!important;
+      @media #{$sm}{
+        font-size: 21px;
+      }
+    }
+    .pp-hacemos-container{
+      @include clean-list;
+      @include zero-hard;
+      @include flex-row-center;
+      @media #{$sm}{
+        @include flex-col-center;
+      }
+      .pp-hacemos-item{
+        @include clean-list;
+        @include zero-hard;
+        margin-right: 40px;
+        @media #{$sm}{
+          margin-right: 0px;
+        }
+        &:last-of-type{
+          margin-right: 0px;
+        }
+        .pp-hacemos{
+          @include flex-col-center;
+          .pp-hacemos-img{
+            width: 180px;
+            height: 180px;
+            border-radius: 90px;
+            @include shadow;
+            margin-bottom: 20px;
+            background: {
+              size: cover;
+              position: center;
+              repeat: no-repeat;
+            }
+          }
+          .pp-hacemos-wrapper-content{
+            width: 100%;
+            .pp-hacemos-title{
+              @include clean-webkit;
+              @include zero-hard;              
+              font: {
+                size: 36px;
+                weight: 600;
+              }
+              color: $color-3;
+              text-align: center;
+              @media #{$sm}{
+                font-size: 21px;
+              }
+            }
+            .pp-hacemos-text{
+              font: {
+                size: 18px;
+                weight: 400;
+              }
+              color: $black;
+              text-align: center;
+              @media #{$sm}{
+                font-size: 14px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.pp-footer{
+  width: 100vw;
+  height: 56px;
+  background-color: $black;
+  box-sizing: border-box;
+  padding-left: 40px;
+  padding-right: 40px;
+  @include shadow;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 4;
+  @media #{$sm}{
+    height: 36px;
+  }
+  img {
+    height: 36px;
+    @media #{$sm}{
+      height: 28px;
+    }
+  }
+  a {
+    font: {
+      size: 12px;
+      weight: 700;
+    }
+    color: $white;
+    cursor: pointer;
+    @media #{$sm}{
+      margin-left: 20px;
+      font-size: 10px;
+    }
+  }
+}

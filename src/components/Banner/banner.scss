@@ -1,0 +1,162 @@
+@import "../../styles/common/vars.scss";
+@import "../../styles/common/mixins.scss";
+
+.pp-banner{
+  width: 100%;
+  height: 80vh;
+  @include clean-list;
+  @include zero-hard;
+  background-color: $color-2;
+  position: relative;
+  overflow: hidden;
+  display: block;
+  background: {
+    size: cover;
+    position: center;
+    repeat: no-repeat;
+    image: url("https://gricel.sfo2.digitaloceanspaces.com/pplastic/background.jpg");
+  }
+  .pp-banner-slide{
+    @include clean-list;
+    @include zero-hard;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    min-width: 100%;
+    height: 80vh;
+    min-height: 80vh;
+    @include flex-col-center;
+    opacity: 0;
+    @include animate;
+    &.active {
+      opacity: 1;
+    }
+    .pp-banner-slide-wrapper{
+      width: 100%;
+      min-width: 100%;
+      height: 80vh;
+      min-height: 80vh;
+      box-sizing: border-box;
+      padding: 40px;
+      background: {
+        size: cover;
+        position: center;
+        repeat: no-repeat;
+      }
+      position: relative;
+      @include flex-col-center;
+      @media #{$sm}{
+        padding: 20px;
+      }
+      &:after{
+        z-index: 0;
+        width: 100%;
+        height: 80vh;
+        display: inline-block;
+        left: 0;
+        top: 0;
+        position: absolute;
+        content: "";
+        background-color: rgba($white, 0.75);
+        @media #{$sm}{
+          background-color: rgba($white, 0.9);
+        }
+      }
+      .pp-banner-title{
+        position: relative;
+        z-index: 1;
+        @include clean-webkit;
+        @include zero-hard;
+        width: 75%;
+        font: {
+          size: 36px;
+          weight: 800;
+        }
+        color: $black;
+        text-align: center;
+        text-transform: uppercase;
+        margin-top: 30px!important;
+        @media #{$sm}{
+          width: 100%;
+          font-size: 21px;
+          margin-top: 0px!important;
+        }
+      }
+      .pp-banner-img{
+        position: relative;
+        z-index: 2;
+        @include zero-hard;
+        margin-bottom: 10px!important;
+        width: 480px;
+        height: 280px;
+        border-radius: 10px;
+        background: {
+          size: cover;
+          position: center;
+          repeat: no-repeat;
+        }
+        @include shadow;
+        @media #{$sm}{
+          width: 160px;
+          height: 160px;
+          border-radius: 80px;
+        }
+      }
+      .pp-banner-text{
+        @include clean-webkit;
+        @include zero-hard;
+        position: relative;
+        z-index: 1;
+        box-sizing: border-box;
+        width: 75%;
+        font: {
+          size: 21px;
+          weight: 400;
+        }
+        text-align: center;
+        color: $black;
+        @media #{$sm}{
+          font-size: 14px;
+          width: 100%;
+        }
+        .pp-banner-link{
+          font: {
+            size: 21px;
+            weight: 600;
+          }
+          color: $color-3;
+          text-decoration: none;
+          cursor: pointer;
+          @media #{$sm}{
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+  .pp-indicators{
+    width: 100%;
+    position: absolute;
+    bottom: 20px;
+    left: 0px;
+    @media #{$sm}{
+      bottom: 40px;
+    }
+    .pp-indicator{
+      width: 20px;
+      height: 20px;
+      border-radius: 10px;
+      background-color: $white;
+      @include animate;
+      margin-right: 10px;
+      @include shadow;
+      &:last-of-type{
+        margin-right: 0px;
+      }
+      &.active{
+        background-color: $black;
+      }
+    }
+  }
+}
