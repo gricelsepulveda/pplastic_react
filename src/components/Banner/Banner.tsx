@@ -13,6 +13,7 @@ export type BannerProps = {
 const Banner:React.FunctionComponent<BannerProps> = (props) => {
   const [page, setPage] = useState(0)
   const [open, setModalOpen] = useState(false)
+  const [counter, setCounter] = useState(0)
   const [dataModal, setDataModal] = useState({
     title:"",
     subtitle:"",
@@ -21,11 +22,30 @@ const Banner:React.FunctionComponent<BannerProps> = (props) => {
     img: ""
   })
 
-  useEffect(() => {
+  let timer =
     setTimeout(() => {
+      setCounter(counter + 1)
+    },  1000)
+  
+  
+  useEffect(() => {
+    if (counter <= 7 ){
+      timer
+    }
+    else if (counter == 8){
+      setCounter(0)
+      clearTimeout(timer)
       setPage(page + 1 != 3 ? page + 1 : 0)
-    }, 8000)
-  }, [page])
+    }
+  }, [counter])
+
+  const handleClick = (index:number) => {
+    clearTimeout(timer)
+    setCounter(0)
+    setPage(index)
+  }
+
+  console.log(counter)
 
   const handleOpen = (data:any) => {
     setDataModal({
@@ -41,6 +61,8 @@ const Banner:React.FunctionComponent<BannerProps> = (props) => {
   const handleClose = () => {
     setModalOpen(false)
   }
+
+
 
   return (
     <>
@@ -77,7 +99,7 @@ const Banner:React.FunctionComponent<BannerProps> = (props) => {
         <div className="pp-indicators flex row center">
           {
             props.data.map((_item:any, _index:number) => 
-              <span key={`${_item}-${_index}`}className={`pp-indicator ${page == _index ? "active" : ""}`}/>
+              <span key={`${_item}-${_index}`} className={`pp-indicator ${page == _index ? "active" : ""}`} onClick={() => handleClick(_index)}/>
             )
           }
         </div>

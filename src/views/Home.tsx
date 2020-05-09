@@ -15,7 +15,7 @@ const Home:React.FunctionComponent = () => {
     <>
       <nav className="pp-nav flex row around">
         <div className="flex row start pp-title-nav">
-          <img className="pp-logo" src="https://gricel.sfo2.digitaloceanspaces.com/pplastic/logo.svg" alt="logo precious plastic" title="logo precious plastic"/>
+          <img className="pp-logo" src="https://gricel.sfo2.digitaloceanspaces.com/pplastic/logo_new.svg" alt="logo precious plastic" title="logo precious plastic"/>
           <h1 className="pp-title">Precious Plastic</h1>
         </div>
         <p className="pp-description">Buscamos en el mediano plazo una alternativa de reciclaje para TODO tipo de plástico producidos como desecho por cada uno de nosotros.</p>
