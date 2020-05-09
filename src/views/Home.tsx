@@ -26,7 +26,7 @@ const Home:React.FunctionComponent = () => {
         </span>
       </nav>
       <section className="pp-body-landing">
-        <Banner data={bannerData}/>
+        <Banner counter={0} data={bannerData}/>
         <section className="pp-que-hacemos">
           <h3 className="pp-que-hacemos-title">¿Qué hacemos?</h3>
           <ul className="pp-hacemos-container">
