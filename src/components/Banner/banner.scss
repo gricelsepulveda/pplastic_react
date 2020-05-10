@@ -16,6 +16,9 @@
     repeat: no-repeat;
     image: url("https://gricel.sfo2.digitaloceanspaces.com/pplastic/background.jpg");
   }
+  @media #{$sm}{
+    background: transparent;
+  }
   .pp-banner-slide{
     @include clean-list;
     @include zero-hard;
@@ -47,7 +50,7 @@
       position: relative;
       @include flex-col-center;
       @media #{$sm}{
-        padding: 20px;
+        padding: 0px;
       }
       &:after{
         z-index: 0;
@@ -60,7 +63,7 @@
         content: "";
         background-color: rgba($white, 0.75);
         @media #{$sm}{
-          background-color: rgba($white, 0.9);
+          background-color: transparent;
         }
       }
       .pp-banner-title{
@@ -98,9 +101,10 @@
         }
         @include shadow;
         @media #{$sm}{
-          width: 160px;
-          height: 160px;
-          border-radius: 80px;
+          width: 100%;
+          height: 50%;
+          border-radius: 0px;
+          box-shadow: none;
         }
       }
       .pp-banner-text{
@@ -151,6 +155,7 @@
       @include animate;
       margin-right: 10px;
       @include shadow;
+      cursor: pointer;
       &:last-of-type{
         margin-right: 0px;
       }

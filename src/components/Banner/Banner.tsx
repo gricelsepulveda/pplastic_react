@@ -1,19 +1,19 @@
-import React, {useState, useEffect} from "react"
-
+import React, {useState, useEffect, useCallback, useRef} from "react"
+ 
 //Components
 import Modal from "../Modal/Modal"
-
+ 
 //Styles
 import "./banner.scss"
-
+ 
 export type BannerProps = {
   data: string[],
   counter: number
 }
+ 
 const Banner:React.FunctionComponent<BannerProps> = (props) => {
   const [page, setPage] = useState(0)
   const [open, setModalOpen] = useState(false)
-  const [counter, setCounter] = useState(0)
   const [dataModal, setDataModal] = useState({
     title:"",
     subtitle:"",
@@ -21,32 +21,35 @@ const Banner:React.FunctionComponent<BannerProps> = (props) => {
     link:undefined,
     img: ""
   })
-
-  let timer =
-    setTimeout(() => {
-      setCounter(counter + 1)
-    },  1000)
-  
-  
+  /** Increases the page by 1, if it reaches the roof value then resets to 0 */
+  const handleSetPage = useCallback((currentPage: number) => {
+    let nextPage = currentPage + 1;
+    if (nextPage === 3) {
+      nextPage = 0;
+    }
+    return nextPage;
+  }, [])
+ 
+  const timerFunction = useCallback(() => {
+    setPage(handleSetPage);
+  },[])
+ 
+  const timer = useRef(setTimeout(timerFunction, 8000));
+ 
   useEffect(() => {
-    if (counter <= 7 ){
-      timer
-    }
-    else if (counter == 8){
-      setCounter(0)
-      clearTimeout(timer)
-      setPage(page + 1 != 3 ? page + 1 : 0)
-    }
-  }, [counter])
-
+    return () => {
+      if (timer.current) {
+        clearTimeout(timer.current)
+      }
+    };
+  }, [])
+ 
   const handleClick = (index:number) => {
-    clearTimeout(timer)
-    setCounter(0)
+    clearTimeout(timer.current)
     setPage(index)
+    timer.current = setTimeout(timerFunction, 8000);
   }
-
-  console.log(counter)
-
+ 
   const handleOpen = (data:any) => {
     setDataModal({
       title:data.title,
@@ -57,16 +60,14 @@ const Banner:React.FunctionComponent<BannerProps> = (props) => {
     })
     setModalOpen(true)
   }
-
+ 
   const handleClose = () => {
     setModalOpen(false)
   }
-
-
-
+ 
   return (
     <>
-      <Modal         
+      <Modal        
           title={dataModal.title}
           subtitle={dataModal.subtitle}
           text={dataModal.text}
@@ -86,7 +87,7 @@ const Banner:React.FunctionComponent<BannerProps> = (props) => {
                   <figure className="pp-banner-img" style={{backgroundImage: `url(${item.img})`}}/>
                   <h2 className="pp-banner-title">{item.title}</h2>
                   <p className="pp-banner-text">
-                    {item.text} 
+                    {item.text}
                     <a className="pp-banner-link" onClick={() => handleOpen(item)}>
                       {item.link.text}
                     </a>
@@ -98,7 +99,7 @@ const Banner:React.FunctionComponent<BannerProps> = (props) => {
         }
         <div className="pp-indicators flex row center">
           {
-            props.data.map((_item:any, _index:number) => 
+            props.data.map((_item:any, _index:number) =>
               <span key={`${_item}-${_index}`} className={`pp-indicator ${page == _index ? "active" : ""}`} onClick={() => handleClick(_index)}/>
             )
           }
@@ -107,5 +108,5 @@ const Banner:React.FunctionComponent<BannerProps> = (props) => {
     </>
   )
 }
-
+ 
 export default Banner
